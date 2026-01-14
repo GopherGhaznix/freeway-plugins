@@ -23,7 +23,7 @@
         "text-formatter"
       ],
       "description": "Start speaking with \"I want to create...\" and your voice input will be processed and formatted using the Gemini API.\nInspired by Mr. Jagan request.",
-      "source_url": "https://github.com/freeway-app/freeway-plugins/tree/main/plugins/jagan-gemini-formatter",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/jagan-gemini-formatter",
       "compatibility": [],
       "hooks": [
         "before_paste"
