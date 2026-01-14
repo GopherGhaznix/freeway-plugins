@@ -21,7 +21,7 @@
     "text-formatter"
   ],
   "description": "Start speaking with \"I want to create...\" and your voice input will be processed and formatted using the Gemini API.\nInspired by Mr. Jagan request.",
-  "instructions": "Get your Gemini API key: https://aistudio.google.com/api-keys.\n\nThe prompt should include {text}, which will be replaced with your request after removing the trigger phrase.",
+  "instructions": "Get your Gemini API key: https://aistudio.google.com/api-keys\n\nThe prompt should include {text}, which will be replaced with your request after removing the trigger phrase.",
   "hooks": ["before_paste"],
   "dependencies": [],
   "trigger": {
