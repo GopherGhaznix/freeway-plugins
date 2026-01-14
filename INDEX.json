@@ -3,6 +3,7 @@
   "updated_at": "2026-01-14T00:00:00Z",
   "items": [
     {
+      "featured": true,
       "id": "jagan-gemini-formatter",
       "name": "Jagan Gemini Formatter",
       "version": 1,
