@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "created_at": "2026-01-14T00:00:00Z",
+  "updated_at": "2026-01-14T00:00:00Z",
+  "name": "Jagan Gemini Formatter",
+  "author": {
+    "name": "Freeway Team",
+    "url": "https://tryfreeway.com",
+    "email": "getintouch@tryfreeway.com"
+  },
+  "source_url": "https://github.com/freeway-app/freeway-plugins/tree/main/plugins/jagan-gemini-formatter",
+  "contributors": [
+    "tryfreeway"
+  ],
+  "compatibility": [],
+  "categories": [
+    "Text Processing"
+  ],
+  "tags": [
+    "gemini",
+    "text-formatter"
+  ],
+  "description": "Start speaking with \"I want to create...\" and your voice input will be processed and formatted using the Gemini API.\nInspired by Mr. Jagan request.",
+  "instructions": "Get your Gemini API key: https://aistudio.google.com/api-keys.\n\nThe prompt should include {text}, which will be replaced with your request after removing the trigger phrase.",
+  "hooks": ["before_paste"],
+  "dependencies": [],
+  "trigger": {
+    "pattern": "I want to create",
+    "matchType": "startsWith"
+  },
+  "settings": [
+    {
+      "type": "input",
+      "name": "api_key",
+      "label": "Gemini API key",
+      "placeholder": "YOUR_API_KEY",
+      "required": true
+    },
+    {
+      "type": "input",
+      "name": "model",
+      "label": "Gemini model",
+      "default": "gemini-2.5-flash-lite",
+      "help_text": "See available models and pricing: https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "type": "input",
+      "name": "prompt",
+      "label": "Prompt",
+      "rows": 6,
+      "default": "Clean up grammar, fix syntax, and return concise structured output (non-markdown).\nOnly output structured plain-text result and ready to paste.\nUse the user request below.\n\nRequest:\n{text}",
+      "help_text": "The substring {text} will be replaced by the captured request (after the trigger)."
+    }
+  ]
+}
