@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updated_at": "2026-01-14T00:00:00Z",
+  "version": 2,
+  "updated_at": "2026-01-17T00:00:00Z",
   "items": [
     {
       "featured": true,
@@ -25,6 +25,116 @@
       ],
       "description": "Start speaking with \"I want to create...\" and your voice input will be processed and formatted using the Gemini API.\nInspired by Mr. Jagan request.",
       "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/jagan-gemini-formatter",
+      "compatibility": [],
+      "hooks": [
+        "before_paste"
+      ]
+    },
+    {
+      "id": "openai-image-generator",
+      "name": "Create Image",
+      "version": 1,
+      "created_at": "2026-01-17T00:00:00Z",
+      "updated_at": "2026-01-17T00:00:00Z",
+      "categories": [
+        "Image Generation"
+      ],
+      "author": {
+        "name": "Freeway Team",
+        "url": "https://tryfreeway.com"
+      },
+      "contributors": [
+        "tryfreeway"
+      ],
+      "tags": [
+        "openai",
+        "image"
+      ],
+      "description": "Generate images using OpenAI and copy them to clipboard. Say 'Create image [description]'.",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-image-generator",
+      "compatibility": [],
+      "hooks": [
+        "before_paste"
+      ]
+    },
+    {
+      "id": "openai-markdown-converter",
+      "name": "Convert to Markdown",
+      "version": 1,
+      "created_at": "2026-01-17T00:00:00Z",
+      "updated_at": "2026-01-17T00:00:00Z",
+      "categories": [
+        "Text Processing"
+      ],
+      "author": {
+        "name": "Freeway Team",
+        "url": "https://tryfreeway.com"
+      },
+      "contributors": [
+        "tryfreeway"
+      ],
+      "tags": [
+        "openai",
+        "text-formatter"
+      ],
+      "description": "Convert your transcribed text to well-formatted Markdown syntax using OpenAI.",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-markdown-converter",
+      "compatibility": [],
+      "hooks": [
+        "before_paste"
+      ]
+    },
+    {
+      "id": "openai-selection-translator",
+      "name": "Translate Selection",
+      "version": 1,
+      "created_at": "2026-01-17T00:00:00Z",
+      "updated_at": "2026-01-17T00:00:00Z",
+      "categories": [
+        "Text Processing",
+        "Translation"
+      ],
+      "author": {
+        "name": "Freeway Team",
+        "url": "https://tryfreeway.com"
+      },
+      "contributors": [
+        "tryfreeway"
+      ],
+      "tags": [
+        "openai",
+        "translator"
+      ],
+      "description": "Translate selected text to any language. Select text first, then say 'Translate selection to [language] language'.",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-selection-translator",
+      "compatibility": [],
+      "hooks": [
+        "before_paste"
+      ]
+    },
+    {
+      "id": "openai-translator",
+      "name": "Translate Text",
+      "version": 1,
+      "created_at": "2026-01-17T00:00:00Z",
+      "updated_at": "2026-01-17T00:00:00Z",
+      "categories": [
+        "Text Processing",
+        "Translation"
+      ],
+      "author": {
+        "name": "Freeway Team",
+        "url": "https://tryfreeway.com"
+      },
+      "contributors": [
+        "tryfreeway"
+      ],
+      "tags": [
+        "openai",
+        "translator"
+      ],
+      "description": "Translate your transcribed text to any language using OpenAI. Say 'Translate to [language] [your text]'.",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-translator",
       "compatibility": [],
       "hooks": [
         "before_paste"
