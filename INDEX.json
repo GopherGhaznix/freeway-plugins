@@ -31,7 +31,7 @@
       ]
     },
     {
-      "id": "hey-freeway",
+      "id": "openai-hey-freeway",
       "name": "Hey Freeway (OpenAI)",
       "version": 1,
       "featured": true,
@@ -52,7 +52,7 @@
         "assistant"
       ],
       "description": "Ask Freeway anything. Say \"Hey Freeway [your question]\".",
-      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/hey-freeway",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-hey-freeway",
       "compatibility": [],
       "hooks": [
         "before_paste"
