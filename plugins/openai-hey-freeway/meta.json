@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "id": "hey-freeway",
+  "created_at": "2026-01-17T00:00:00Z",
+  "updated_at": "2026-01-17T00:00:00Z",
+  "name": "Hey Freeway (OpenAI)",
+  "featured": true,
+  "author": {
+    "name": "Freeway Team",
+    "url": "https://tryfreeway.com",
+    "email": "getintouch@tryfreeway.com"
+  },
+  "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/hey-freeway",
+  "contributors": [
+    "tryfreeway"
+  ],
+  "compatibility": [],
+  "categories": [
+    "AI Assistant"
+  ],
+  "tags": [
+    "openai",
+    "assistant"
+  ],
+  "description": "Ask Freeway anything. Say \"Hey Freeway [your question]\".",
+  "instructions": "Get your OpenAI API key: https://platform.openai.com/api-keys\n\nUsage: Say \"Hey Freeway what's the weather like?\" to ask a question.",
+  "hooks": ["before_paste"],
+  "dependencies": [],
+  "trigger": {
+    "pattern": "Hey Freeway",
+    "matchType": "startsWith"
+  },
+  "settings": [
+    {
+      "type": "input",
+      "name": "api_key",
+      "label": "OpenAI API key",
+      "placeholder": "sk-...",
+      "required": true
+    },
+    {
+      "type": "input",
+      "name": "model",
+      "label": "Model",
+      "default": "gpt-5-nano",
+      "help_text": "OpenAI model to use (e.g., gpt-5-nano, gpt-5-mini)"
+    }
+  ]
+}

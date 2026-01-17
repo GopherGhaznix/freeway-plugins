@@ -1,33 +1,13 @@
 import base64
 import json
 import os
-import re
 import subprocess
+import time
 import tempfile
 import urllib.error
 import urllib.request
 
 import freeway
-
-
-def _strip_trigger_prefix(text: str, pattern: str) -> str:
-    """Strip the trigger pattern from the start of text if present."""
-    if not text or not pattern:
-        return text
-
-    text_normalized = re.sub(r"[^\w\s]", "", text).strip().lower()
-    pattern_normalized = re.sub(r"[^\w\s]", "", pattern).strip().lower()
-
-    if text_normalized.startswith(pattern_normalized):
-        tokens = pattern_normalized.split()
-        if not tokens:
-            return text
-        regex_pattern = r"^\s*" + r"[^\w]*".join(re.escape(t) for t in tokens) + r"[^\w]*"
-        match = re.match(regex_pattern, text, re.IGNORECASE)
-        if match:
-            return text[match.end():].lstrip()
-
-    return text
 
 
 def _generate_image(api_key: str, model: str, prompt: str, size: str, quality: str, timeout: int = 120) -> bytes:
@@ -99,16 +79,7 @@ def before_paste():
         freeway.log("No text to process.")
         return
 
-    # Get trigger pattern and strip it from text
-    trigger = freeway.get_trigger()
-    trigger_pattern = trigger.get("pattern") if trigger else None
-
-    if trigger_pattern:
-        image_prompt = _strip_trigger_prefix(original_text, trigger_pattern)
-    else:
-        image_prompt = original_text
-
-    image_prompt = image_prompt.strip()
+    image_prompt = original_text.strip()
     if not image_prompt:
         freeway.log("No image description provided; skipping.")
         return
@@ -145,6 +116,9 @@ def before_paste():
 
         freeway.log("Image copied to clipboard.")
         freeway.set_status_text("✓ Image copied to clipboard")
+
+        # Sleep for 1 second
+        time.sleep(2)
 
         # Cancel to prevent any paste action - image is in clipboard
         freeway.cancel()

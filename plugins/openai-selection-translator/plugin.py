@@ -1,30 +1,10 @@
 import json
-import re
 import subprocess
 import time
 import urllib.error
 import urllib.request
 
 import freeway
-
-
-DEFAULT_PROMPT = "Translate the following text to {language}. Output only the translation, nothing else."
-
-
-def _extract_language(text: str) -> str:
-    """
-    Extract the language from the trigger pattern.
-    Pattern: "Translate selection to [language] language"
-    """
-    # Normalize text for matching
-    text_normalized = re.sub(r"[^\w\s]", "", text).strip().lower()
-
-    # Match pattern: translate selection to X language
-    match = re.match(r"translate\s+selection\s+to\s+([a-z]{1,15})\s+language", text_normalized)
-    if match:
-        return match.group(1).capitalize()
-
-    return ""
 
 
 def _get_clipboard_text() -> str:
@@ -41,16 +21,12 @@ def _get_clipboard_text() -> str:
         return ""
 
 
-def _call_openai(api_key: str, model: str, system_prompt: str, user_content: str, timeout: int = 30) -> str:
-    """Call OpenAI Chat Completions API."""
-    url = "https://api.openai.com/v1/chat/completions"
+def _call_openai(api_key: str, model: str, prompt: str, timeout: int = 30) -> str:
+    """Call OpenAI Responses API."""
+    url = "https://api.openai.com/v1/responses"
     payload = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_content}
-        ],
-        "temperature": 0.3,
+        "input": prompt,
     }
     data = json.dumps(payload).encode("utf-8")
     request = urllib.request.Request(
@@ -71,12 +47,13 @@ def _call_openai(api_key: str, model: str, system_prompt: str, user_content: str
     except urllib.error.URLError as e:
         raise RuntimeError(f"Network error: {e.reason}") from e
 
-    choices = response_data.get("choices") or []
-    if choices:
-        message = choices[0].get("message", {})
-        content = message.get("content")
-        if content:
-            return content.strip()
+    output = response_data.get("output") or []
+    for item in output:
+        if item.get("type") == "message":
+            content = item.get("content") or []
+            for c in content:
+                if c.get("type") == "output_text":
+                    return c.get("text", "").strip()
     raise RuntimeError("No response returned from OpenAI.")
 
 
@@ -86,18 +63,11 @@ def before_paste():
         freeway.log("OpenAI API key is missing; skipping.")
         return
 
-    model = freeway.get_setting("model") or "gpt-5-mini"
-    prompt_template = freeway.get_setting("prompt") or DEFAULT_PROMPT
+    model = freeway.get_setting("model") or "gpt-5-nano"
 
-    original_text = freeway.get_text()
-    if not original_text:
+    text = freeway.get_text()
+    if not text:
         freeway.log("No text to process.")
-        return
-
-    # Extract language from the spoken command
-    language = _extract_language(original_text)
-    if not language:
-        freeway.log("Could not determine target language from command.")
         return
 
     freeway.set_status_text("Copying selection…")
@@ -118,17 +88,20 @@ def before_paste():
 
     clipboard_text = clipboard_text.strip()
 
-    # Build the prompt
-    system_prompt = prompt_template.replace("{language}", language)
+    # Build prompt: text already contains the instruction
+    # prompt = f"{text}. Output only the translation, nothing else.\n\nText:\n{selected_text}"
+    prompt = freeway.get_setting("prompt")
+    prompt = prompt.replace("{text}", text)
+    prompt = prompt.replace("{selected_text}", clipboard_text)
 
-    freeway.set_status_text(f"Translating to {language}…")
+    freeway.set_status_text("Translating…")
     freeway.set_indicator_color("#10A37F")  # OpenAI green
 
     try:
-        response_text = _call_openai(api_key, model, system_prompt, clipboard_text)
+        response_text = _call_openai(api_key, model, prompt)
         freeway.set_text(response_text)
-        freeway.log(f"Translated selection to {language} with model {model}.")
-        freeway.set_status_text(f"✓ Translated to {language}")
+        freeway.log(f"Translated selection with model {model}.")
+        freeway.set_status_text("✓ Translated")
     except Exception as exc:
         freeway.log(f"OpenAI error: {exc}")
         freeway.set_status_text(f"Error: {str(exc)[:60]}")

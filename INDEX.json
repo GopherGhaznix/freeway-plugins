@@ -5,7 +5,7 @@
     {
       "featured": true,
       "id": "jagan-gemini-formatter",
-      "name": "Jagan Gemini Formatter",
+      "name": "Jagan Gemini Formatter (Gemini)",
       "version": 1,
       "created_at": "2026-01-14T00:00:00Z",
       "updated_at": "2026-01-14T00:00:00Z",
@@ -31,8 +31,36 @@
       ]
     },
     {
+      "id": "hey-freeway",
+      "name": "Hey Freeway (OpenAI)",
+      "version": 1,
+      "featured": true,
+      "created_at": "2026-01-17T00:00:00Z",
+      "updated_at": "2026-01-17T00:00:00Z",
+      "categories": [
+        "AI Assistant"
+      ],
+      "author": {
+        "name": "Freeway Team",
+        "url": "https://tryfreeway.com"
+      },
+      "contributors": [
+        "tryfreeway"
+      ],
+      "tags": [
+        "openai",
+        "assistant"
+      ],
+      "description": "Ask Freeway anything. Say \"Hey Freeway [your question]\".",
+      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/hey-freeway",
+      "compatibility": [],
+      "hooks": [
+        "before_paste"
+      ]
+    },
+    {
       "id": "openai-image-generator",
-      "name": "Create Image",
+      "name": "Create Image (OpenAI)",
       "version": 1,
       "featured": true,
       "created_at": "2026-01-17T00:00:00Z",
@@ -51,7 +79,7 @@
         "openai",
         "image"
       ],
-      "description": "Generate images using OpenAI and copy them to clipboard. Say 'Create image [description]'.",
+      "description": "Generate images and copy them to clipboard. Say 'Create image [description]'.",
       "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-image-generator",
       "compatibility": [],
       "hooks": [
@@ -59,36 +87,8 @@
       ]
     },
     {
-      "id": "openai-markdown-converter",
-      "name": "Convert to Markdown",
-      "version": 1,
-      "featured": true,
-      "created_at": "2026-01-17T00:00:00Z",
-      "updated_at": "2026-01-17T00:00:00Z",
-      "categories": [
-        "Text Processing"
-      ],
-      "author": {
-        "name": "Freeway Team",
-        "url": "https://tryfreeway.com"
-      },
-      "contributors": [
-        "tryfreeway"
-      ],
-      "tags": [
-        "openai",
-        "text-formatter"
-      ],
-      "description": "Convert your transcribed text to well-formatted Markdown syntax using OpenAI.",
-      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-markdown-converter",
-      "compatibility": [],
-      "hooks": [
-        "before_paste"
-      ]
-    },
-    {
       "id": "openai-selection-translator",
-      "name": "Translate Selection",
+      "name": "Translate Selection (OpenAI)",
       "version": 1,
       "featured": true,
       "created_at": "2026-01-17T00:00:00Z",
@@ -108,37 +108,8 @@
         "openai",
         "translator"
       ],
-      "description": "Translate selected text to any language. Select text first, then say 'Translate selection to [language] language'.",
+      "description": "Translate selected text to any language. Select text first, then say 'Translate selection to Spanish'.",
       "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-selection-translator",
-      "compatibility": [],
-      "hooks": [
-        "before_paste"
-      ]
-    },
-    {
-      "id": "openai-translator",
-      "name": "Translate Text",
-      "version": 1,
-      "featured": true,
-      "created_at": "2026-01-17T00:00:00Z",
-      "updated_at": "2026-01-17T00:00:00Z",
-      "categories": [
-        "Text Processing",
-        "Translation"
-      ],
-      "author": {
-        "name": "Freeway Team",
-        "url": "https://tryfreeway.com"
-      },
-      "contributors": [
-        "tryfreeway"
-      ],
-      "tags": [
-        "openai",
-        "translator"
-      ],
-      "description": "Translate your transcribed text to any language using OpenAI. Say 'Translate to [language] [your text]'.",
-      "source_url": "https://github.com/tryfreeway/freeway-plugins/tree/main/plugins/openai-translator",
       "compatibility": [],
       "hooks": [
         "before_paste"

@@ -3,7 +3,7 @@
   "id": "openai-image-generator",
   "created_at": "2026-01-17T00:00:00Z",
   "updated_at": "2026-01-17T00:00:00Z",
-  "name": "Create Image",
+  "name": "Create Image (OpenAI)",
   "featured": true,
   "author": {
     "name": "Freeway Team",
@@ -22,7 +22,7 @@
     "openai",
     "image"
   ],
-  "description": "Generate images using OpenAI and copy them to clipboard. Say 'Create image [description]'.",
+  "description": "Generate images and copy them to clipboard. Say 'Create image [description]'.",
   "instructions": "Get your OpenAI API key: https://platform.openai.com/api-keys\n\nUsage: Say 'Create image a beautiful sunset over mountains' to generate an image.\n\nThe image will be copied to your clipboard, ready to paste (Cmd+V).",
   "hooks": ["before_paste"],
   "dependencies": [],
